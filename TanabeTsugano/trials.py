@@ -12,8 +12,9 @@ mode_size = [8, 8, 12, 8]
 line_size = [2, 2, 2, 2]
 
 
-df = pd.read_csv('graphData/TSd4cammag.csv')
+df = pd.read_csv('graphData/TSd8cammag.csv')
 
+print((df.shape))
 
 x_data =df.iloc[:,0]
 

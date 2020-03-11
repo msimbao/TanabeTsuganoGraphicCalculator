@@ -13,7 +13,7 @@ high_2014 = [28.8, 28.5, 37.0, 56.8, 69.7, 79.7, 78.5, 77.8, 74.1, 62.6, 45.3, 3
 low_2014 = [12.7, 14.3, 18.6, 35.5, 49.9, 58.0, 60.0, 58.6, 51.7, 45.2, 32.2, 29.1]
 
 
-df = pd.read_csv('graphData/TSd4cammag.csv')
+df = pd.read_csv('graphData/TSd2cammag.csv')
 
 
 fig = go.Figure()

@@ -1,0 +1,95 @@
+function makeplot() {
+    Plotly.d3.csv("https://raw.githubusercontent.com/msimbao/TanabeTsuganoGraphicCalculator/master/TanabeTsugano/graphData/TSd5cammag.csv", function(data){ processData(data) } );
+
+};
+
+var data = []
+    
+function processData(allRows) {
+
+    console.log(allRows);
+    var x = [], y = [], standard_deviation = [];
+
+    allRows.keys();
+    for (var i=0; i<allRows.length; i++) {
+        row = allRows[i];
+        x.push( row['delta/B'] );
+        delete row['delta/B']
+        
+        items = Object.keys(row)
+        y.push( row[items[j]] );
+    }
+
+    for (var i=0; i<allRows.length; i++) {
+        row = allRows[i];
+        x.push( row['delta/B'] );
+        delete row['delta/B']
+        
+        items = Object.keys(row)
+        y.push( row[items[j]] );
+    }
+    console.log(x)
+    console.log(y)
+
+    console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
+    makePlotly( x, y, standard_deviation );
+
+}
+
+function makePlotly( x, y, standard_deviation ){
+
+    for (j in y){ 
+    traces = [{
+        x: x, 
+        y: y[j]
+    }];
+
+    console.log(traces)
+    data.push(traces)
+}
+
+    var plotDiv = document.getElementById("plot");
+
+    var layout = {
+        title: 'Volume of Apple Shares Traded',
+        xaxis: {
+          title: 'AXIS TITLE',
+          titlefont: {
+            family: 'Arial, sans-serif',
+            size: 18,
+            color: 'lightgrey'
+          },
+          showticklabels: true,
+          tickangle: 'auto',
+          tickfont: {
+            family: 'Old Standard TT, serif',
+            size: 14,
+            color: 'black'
+          },
+          exponentformat: 'e',
+          showexponent: 'all'
+        },
+        yaxis: {
+          title: 'AXIS TITLE',
+          titlefont: {
+            family: 'Arial, sans-serif',
+            size: 18,
+            color: 'lightgrey'
+          },
+          showticklabels: true,
+          tickangle: 45,
+          tickfont: {
+            family: 'Old Standard TT, serif',
+            size: 14,
+            color: 'black'
+          },
+          exponentformat: 'e',
+          showexponent: 'all',
+          range: [0, 70]
+        }
+      };
+
+    Plotly.newPlot('myDiv', data, layout,
+        {title: 'Plotting CSV data from AJAX call'});
+};
+  makeplot();
